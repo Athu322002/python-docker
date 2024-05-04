@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Debug output
-        run: echo "Repository name is ${{ github.repository }} and Docker username is ${{ secrets.DOCKER_USERNAME }}"
+        run: echo "Docker tag: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:latest"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
