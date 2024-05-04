@@ -21,10 +21,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Debug output
+        run: |
+          echo "Docker Username: ${{ secrets.DOCKER_USERNAME }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Full Docker Tag: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:latest"
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:latest
-
